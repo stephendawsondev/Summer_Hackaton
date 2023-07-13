@@ -18,10 +18,9 @@ Install requirements
 create a file env.py with:
 
 ```bash
-import os
-os.environ['SECRET_KEY'] = "write a key to your local machine"
+os.environ['SECRET_KEY'] = "django-insecure-yxgzbia(4y2mveyo)0c=&j1^6#j1cai%!p56$l8+px4+kb#*4w"
 os.environ['CLOUDINARY_KEY'] = "AdH_AuJkA7GU0CfjrrilM_Q2E6c"
-
+os.environ['DATABASE_URL'] = "postgres://vbjzilxc:0YARXa6mPd-Ho3RdagEmgGbUrqcya64z@trumpet.db.elephantsql.com/vbjzilxc"
 ```
 
 
