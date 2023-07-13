@@ -36,6 +36,15 @@
 
 <body>
 
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
+    <a href= "">Challenges Management</a>
+    {% endif %}
+    <a href="{% url 'account_logout' %}" class="">Logout</a>
+    {% else %}
+    <a href="{% url 'account_signup' %}" class="">Register</a>
+    <a href="{% url 'account_login' %}"  class="">Login</a>
+    {% endif %}
     <h1> Base</h1>
     {% block content %}
     {% endblock %}
