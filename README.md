@@ -12,7 +12,7 @@ Activate the virtual environment
 Install requirements
 
 ```bash
-    pip3 install requirements.txt 
+    pip3 install -r requirements.txt 
 ```
 
 create a file env.py with:
