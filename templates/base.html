@@ -14,6 +14,7 @@
     {% endblock %}
 
     {% block core_js %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}" />
     <!-- bootstrap -->
     <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -29,7 +30,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Document</title>
+    <title>Document {% block extra_title %}{% endblock %}</title>
 
 </head>
 
