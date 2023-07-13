@@ -20,6 +20,8 @@ create a file env.py with:
 ```bash
 import os
 os.environ['SECRET_KEY'] = "write a key to your local machine"
+os.environ['CLOUDINARY_KEY'] = "AdH_AuJkA7GU0CfjrrilM_Q2E6c"
+
 ```
 
 
