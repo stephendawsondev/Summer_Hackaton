@@ -22,8 +22,10 @@ os.environ['SECRET_KEY'] = "django-insecure-yxgzbia(4y2mveyo)0c=&j1^6#j1cai%!p56
 os.environ['CLOUDINARY_KEY'] = "AdH_AuJkA7GU0CfjrrilM_Q2E6c"
 os.environ['DATABASE_URL'] = "postgres://vbjzilxc:0YARXa6mPd-Ho3RdagEmgGbUrqcya64z@trumpet.db.elephantsql.com/vbjzilxc"
 ```
-
-
+Run the server
+```bash
+    python3 manage.py runserver
+```
 <hr>
 <h1 align="center"><strong>🌞🚵 Summer of Code 🏄🏖️</strong>
 
