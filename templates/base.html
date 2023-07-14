@@ -33,7 +33,9 @@
     <a href="{% url 'account_signup' %}" class="">Register</a>
     <a href="{% url 'account_login' %}" class="">Login</a>
     {% endif %}
-    <div class="app-container container d-md-none">{% block content %}</div>
+    <div class="app-container container vh-100 d-md-none">
+      {% block content %}
+    </div>
     {% endblock %}
 
     <!-- FontAwesome -->
