@@ -1,0 +1,11 @@
+/* Initial Landing page section styles */
+
+.image-gallery {
+  isolation: isolate;
+}
+
+.landing-section-content {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
