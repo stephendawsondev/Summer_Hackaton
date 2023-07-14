@@ -1,10 +1,141 @@
-{% extends "base.html" %} {% load static %} 
-
+{% extends "base.html" %} {% load static %}
 
 <!-- This is the content of the html use the sintaxis to make it easy to read dont agroup all in one line-->
 {% block content %}
 
-<section class="initial-landing-section container">
+<section class="initial-landing-section position-relative container">
+  <div
+    class="image-gallery row gap-0 max-vh-100 overflow-hidden"
+    data-masonry='{"percentPosition": true }'
+  >
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/amos.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/deniz-altindas.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/eneko-urunuela.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/fons-heijnsbroek.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/gabriella-clare-marino.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/k-mitch-hodge.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/kate-trysh.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/lawrence-hookham.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/madrona-rose.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/olga-nayda.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/sudo.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-6 px-0">
+      <div class="card">
+        <img
+          src="{% static 'images/mosaic-images-webp-smaller/tiago-rosad.webp' %}"
+          alt=""
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+
+  <svg
+    width="51"
+    height="78"
+    viewBox="0 0 51 78"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M25.6501 77.3035L3.5121 37.8228L46.8101 37.2902L25.6501 77.3035Z"
+      fill="#0F0D0D"
+    />
+    <circle cx="25" cy="25" r="25" fill="black" />
+    <path
+      d="M25.5 9L28.98 20.0557H40.2414L31.1307 26.8885L34.6107 37.9443L25.5 31.1115L16.3893 37.9443L19.8693 26.8885L10.7586 20.0557H22.02L25.5 9Z"
+      fill="white"
+    />
+  </svg>
+
   <h1 class="app-title display-4">App title placeholder</h1>
   <div class="buttons-container mx-auto w-75">
     <ul
