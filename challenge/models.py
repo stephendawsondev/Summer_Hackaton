@@ -43,7 +43,7 @@ class Challenge(models.Model):
     title = models.CharField(max_length=100, unique=False)
     cordinates =  models.CharField(max_length=100, unique=False)
     description = models.CharField(max_length=250, unique=False)
-    image = CloudinaryField('image', None)
+    image = CloudinaryField('image',default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     class Meta:
         """
