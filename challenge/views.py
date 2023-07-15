@@ -47,8 +47,16 @@ def answer(request, id):
     answer page view
     """
     answers = Answer.objects.filter(challenge = id).values()
+    challenges = Challenge.objects.filter(place = id).values()
+    city = Place.objects.filter(id = id).values("city")
+    try:
+        city = city[0]['city']
+    except ValueError:
+        print("Error validation")
     context = {
         "answers": answers,
+        "challenges": challenges,
+        "city": city,
     }
 
     return render(request, "answer/answer.html", context)

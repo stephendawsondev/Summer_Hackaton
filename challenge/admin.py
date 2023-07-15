@@ -37,17 +37,17 @@ class ChallengeAdmin(admin.ModelAdmin):
     Admin model class For register model
     """
     list_display = (
-        'title',
+        'quiz',
         'created_on'
         )
     prepopulated_fields = {
-        'slug': ('title',)
+        'slug': ('quiz',)
         }
     search_fields = [
-        'title'
+        'quiz'
         ]
     list_filter = (
-        'title',
+        'quiz',
         'created_on'
         )
     

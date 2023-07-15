@@ -40,7 +40,7 @@ class Challenge(models.Model):
     """
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=100, unique=False)
-    title = models.CharField(max_length=100, unique=False)
+    quiz = models.CharField(max_length=100, unique=False)
     cordinates =  models.CharField(max_length=100, unique=False)
     description = models.CharField(max_length=250, unique=False)
     image = CloudinaryField('image', None)
@@ -54,9 +54,9 @@ class Challenge(models.Model):
             ]
     def __str__(self):
         """
-        Return Title
+        Return Quiz question
         """
-        return str(self.title)
+        return str(self.quiz)
 
 
 class Answer(models.Model):
