@@ -5,7 +5,7 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4">Your Challenge in {{ city }}</h1>
+  <h1 class="app-title display-4">Your Challenge in {{ place.city }}</h1>
   <div class="buttons-container mx-auto w-75">
    <p>Can you find the spot this photo was taken from?</p>
   </div>
@@ -15,7 +15,7 @@
   -->
   {% if places %}
   {% for place in places %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{place}}</h1> 
+  <h1>{{ place }}</h1> 
   <!--Place havs
       country
       city
@@ -28,9 +28,9 @@
 
 
   {% if challenges %}
-  {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{challenge}}</h1> 
-  <img src="{{challenge.image.url}}" alt="name">  <!--Challenge havs  
+  {% for challenge in challenges %}  <!--This is for running in the all places in the database  -->
+  <h1>{{ challenge }}</h1> 
+  <img src="{{ challenge.image.url }}" alt="name">  <!--Challenge havs  
     place (related with the place where the challenge is)
     title
     description 
@@ -43,7 +43,7 @@
 
   {% if questions %}
   {% for question in questions %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{question}}</h1> 
+  <h1>{{ question }}</h1> 
   <!--Question havs  
     challenge (related with the challenge)
     text = models.CharField(max_length=250, unique=False)
