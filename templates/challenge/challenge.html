@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% load static %} 
+{% block extra_css %} 
 
-<!-- This is the content of the html use the sintaxis to make it easy to read dont group all in one line-->
+{% endblock %} 
+<link rel="stylesheet" href="{% static 'css/challenge/style.css %}" />
 {% block content %}
 
 <section class="initial-landing-section container">
@@ -18,7 +20,7 @@
   {% if challenges %}
     {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
     <a href="{% url 'answer' challenge.id %}">
-      <img src="{{challenge.image.url}}" alt="name">  
+      <img class="card"  src="{{challenge.image.url}}" alt="name">  
     </a>
     <!--Challenge havs  
       place (related with the place where the challenge is)
