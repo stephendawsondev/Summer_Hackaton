@@ -4,37 +4,23 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  {% if places %}
-    {% for place in places %}  <!--This is a for runing in the all places in the database  -->
-    <!-- You have Places, Challenges, Questions objects -->
-    <!--Places have place.country place.city place.title -->
-      <h1 class="app-title display-4">{{ place.city }}</h1>
-    {% endfor %}
-  {% endif %}
-      
-  <h1>Challenge 1</h1> 
+  <h1 class="app-title display-4">Your Challenge in {{ city }}</h1>
   <div class="buttons-container mx-auto w-75">
-    <p>Can you find the spot this photo was taken from?</p>
+   <p>Can you find the spot this photo was taken from?</p>
   </div>
-  
+
   {% if challenges %}
-  <!--Challenge has place (related with the place where the challenge is),
-    title, description, image -->
-    {% for challenge in challenges %}  <!--This is for running in the all places in the database  -->
-      <img src="{{ challenge.image.url }}" alt="name">  
-    {% endfor %}
-  {% endif %}
-        
-  <!-- {{ challenge }} -->
-        
-  {% if questions %}
-    <!--Question have 
-    challenge (related with the challenge)
-    text = models.CharField(max_length=250, unique=False)
-    image
+  {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
+  <a href="{% url 'question' challenge.id %}">
+    <h1>{{challenge.title}}</h1>
+    <img src="{{challenge.image.url}}" alt="name">  
+  </a>
+    <!--Challenge havs  
+      place (related with the place where the challenge is)
+      title
+      description 
+      image
     -->
-    {% for question in questions %}  <!--This is for running in the all places in the database  -->
-      <h1>{{ question }}</h1> 
     {% endfor %}
   {% endif %}
   
