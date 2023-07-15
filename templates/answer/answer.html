@@ -5,12 +5,20 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4">Your Challenge in {{ challenge.place }}</h1>
-  <div class="buttons-container mx-auto w-75">
-   <p>Can you find the spot this photo was taken from?</p>
-  </div>
+  <h1 class="app-title display-4">Your Challenge in {{ city }}</h1>
+  {% if challenges %}
+    {% for challenge in challenges %} 
+      <div class="buttons-container mx-auto w-75">
+      <p>{{ challenge.quiz }}</p>
+      </div>
+      <div>
+        <p>{{ challenge.description }}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+
   {% if answers %}
-  {% for answer in answers %}  <!--This is a for runing in the all places in the database  -->
+  {% for answer in answers %}  <!--This is for runing in the all places in the database  -->
   <h1>{{answer.text}}</h1> 
   <!--Answer havs  
     challenge (related with the challenge)
