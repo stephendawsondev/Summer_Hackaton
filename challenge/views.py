@@ -7,6 +7,8 @@ Imports
 from django.shortcuts import render
 # Internal
 from .models import Answer, Challenge, Place
+from django.http import JsonResponse
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def challenge(request, id):
@@ -28,6 +30,26 @@ def challenge(request, id):
     }
 
     return render(request, "challenge/challenge.html", context)
+
+
+def challengeJson(request, id):
+    """
+    Challenge page view
+    """
+    challenges = Challenge.objects.filter(place = id).first()
+    city = Place.objects.filter(id = id).values("city")
+    answers = Answer.objects.all()
+    try:
+        city = city[0]['city']
+    except ValueError:
+        print("Error validation")
+
+    context = {
+        "challenges": challenges,
+        "answers": answers,
+        "city": city,
+    }
+    return JsonResponse({"coordinates": challenges.cordinates})
 
 
 def location(request):

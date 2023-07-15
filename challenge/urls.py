@@ -11,5 +11,6 @@ from . import views
 urlpatterns = [
     path('locations/',views.location,name="location"),
     path('challenge/<int:id>/',views.challenge,name="challenge"),
+    path('json/<int:id>/',views.challengeJson,name="challengeJson"),
     path('answers/<int:id>/',views.answer,name="answer"),
 ]
