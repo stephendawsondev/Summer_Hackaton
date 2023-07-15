@@ -21,9 +21,12 @@ Install requirements
 create a file env.py with:
 
 ```bash
-os.environ['SECRET_KEY'] = "write a key to your local machine"
+import os
+os.environ['SECRET_KEY'] = "Key"
 os.environ['CLOUDINARY_KEY'] = "AdH_AuJkA7GU0CfjrrilM_Q2E6c"
 os.environ['DATABASE_URL'] = "postgres://vbjzilxc:0YARXa6mPd-Ho3RdagEmgGbUrqcya64z@trumpet.db.elephantsql.com/vbjzilxc"
+os.environ['DEVELOPMENT'] = "0"
+
 ```
 
 Run the server
