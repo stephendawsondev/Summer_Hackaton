@@ -1,8 +1,14 @@
 body {
     background-color: #2e2e2e;
-    color: wheat;
+    color: #f5deb3;
 }
-a{
+
+a {
     text-decoration: none;
-    color: wheat;
+    color: #7bb4ff;
+    font-size: medium;
+}
+
+a:hover {
+    font-size: large;
 }
