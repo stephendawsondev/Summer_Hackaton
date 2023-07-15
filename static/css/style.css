@@ -1,11 +1,24 @@
 /* Initial Landing page section styles */
-
 .image-gallery {
   isolation: isolate;
+  max-height: calc(100vh - 20px);
+}
+
+/* the image gallery's overlay */
+.image-gallery::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 1;
 }
 
 .landing-section-content {
-  top: 20%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
 }

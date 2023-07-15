@@ -9,5 +9,7 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.challenge,name="challenge"),
+    path('locations/',views.location,name="location"),
+    path('challenge/<int:id>/',views.challenge,name="challenge"),
+    path('questions/<int:id>/',views.question,name="question"),
 ]

@@ -1,7 +1,6 @@
 {% extends "base.html" %} {% load static %} 
 
-
-<!-- This is the content of the html use the sintaxis to make it easy to read dont agroup all in one line-->
+<!-- This is the content of the html use the sintaxis to make it easy to read dont group all in one line-->
 {% block content %}
 
 <section class="initial-landing-section container">
@@ -10,48 +9,21 @@
    <p>Can you find the spot this photo was taken from?</p>
   </div>
 
-  <!-- You have 
-    Places, Challenges, Questions objects
-  -->
-  {% if places %}
-  {% for place in places %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{place}}</h1> 
-  <!--Place havs
-      country
-      city
-      title  
-    
-    you can call it as place.country place.city etc-->
-  {% endfor %}
-
-  {% endif %}
-
-
   {% if challenges %}
   {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{challenge}}</h1> 
-  <img src="{{challenge.image.url}}" alt="name">  <!--Challenge havs  
-    place (related with the place where the challenge is)
-    title
-    description 
-    image
+  <a href="{% url 'question' challenge.id %}">
+    <h1>{{challenge.title}}</h1>
+    <img src="{{challenge.image.url}}" alt="name">  
+  </a>
+    <!--Challenge havs  
+      place (related with the place where the challenge is)
+      title
+      description 
+      image
     -->
-  {% endfor %}
-
+    {% endfor %}
   {% endif %}
-
-
-  {% if questions %}
-  {% for question in questions %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{question}}</h1> 
-  <!--Question havs  
-    challenge (related with the challenge)
-    text = models.CharField(max_length=250, unique=False)
-    image
-    -->
-  {% endfor %}
-
-  {% endif %}
+  
 </section>
 
 {% endblock %}
