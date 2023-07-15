@@ -8,22 +8,35 @@
   <div class="buttons-container mx-auto w-75">
    <p>Can you find the spot this photo was taken from?</p>
   </div>
-
+  <!--TO DO -->
+    <!-- if found-it == cordinates:
+            display new text -->
+  <!-- <h1 class="app-title display-4">Congratulations</h1>
+  <div class="buttons-container mx-auto w-75">
+    <p>You've successfully identified the location of this photograph!</p>
+  </div> -->
   {% if challenges %}
     {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
     <a href="{% url 'answer' challenge.id %}">
-      <!-- <h1>{{challenge.title}}</h1> -->
       <img src="{{challenge.image.url}}" alt="name">  
     </a>
-      <!--Challenge havs  
-        place (related with the place where the challenge is)
-        title
-        description 
-        image
-      -->
+    <!--Challenge havs  
+      place (related with the place where the challenge is)
+      title
+      description 
+      image
+    -->
     {% endfor %}
-  {% endif %}
-  
+    {% endif %}
+    <!-- challenge.title => The question -->
+    <!-- <h1>{{challenge.title}}</h1> -->
+
+    <button class="found-it">Found It!</button>
+    <button>Skip (-1 point)</button>
+    <!-- if found-it == cordinates:
+            5 points and new button -->
+    <!-- <button>Take the Quiz</button> -->
+
 </section>
 
 {% endblock %}
