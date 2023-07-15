@@ -2,113 +2,104 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {% block meta %}
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% endblock %} {% block extra_css %} {% endblock %} {% block core_js %}
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="{% static 'favicon/favicon.ico' %}"
-    />
-    <!-- Bootstrap 5 CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/dashboard/style.css' %}" />
+<head>
+  {% block meta %}
 
-    {% endblock %} {% block extra_js %} {% endblock %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% endblock %} {% block extra_css %} {% endblock %} {% block core_js %}
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}" />
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/dashboard/style.css' %}" />
 
-    <title>Document {% block extra_title %}{% endblock %}</title>
-  </head>
+  {% endblock %} {% block extra_js %} {% endblock %}
 
-  <body>
+  <title>Document {% block extra_title %}{% endblock %}</title>
+</head>
 
-    <header class="d-md-none">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
-        <div class="container-fluid col">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">My Points</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Leaderboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-              </li>
-            </ul>
-          </div>
+<body>
+
+  <header class="d-md-none">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+      <div class="container-fluid col">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">My Points</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help</a>
+            </li>
+            {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
+            {% endif %}
+            <li class="nav-item">
+              <a  class="nav-link" href="{% url 'account_logout' %}" class="">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a  class="nav-link" href="{% url 'account_signup' %}" class="">Register</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link" href="{% url 'account_login' %}" class="">Login</a>
+            </li>
+            {% endif %}
+
+
+          
+          
+          </ul>
         </div>
-        <a class="navbar-brand text-right col" href="/">Game Name</a>
-      </nav>
-    </header>
-    <div class="app-container container vh-100 d-md-none">
-      
-      {% block content %} {% endblock %}
-    </div>
-
-    <!-- Message that appears on larger screens -->
-    <div class="d-none d-md-block container vh-100 p-5">
-      <div
-        class="message-container border border-light d-flex flex-column justify-content-center align-items-center h-100"
-      >
-        <svg
-          width="51"
-          height="78"
-          viewBox="0 0 51 78"
-          fill="#198754"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M25.6501 77.3035L3.5121 37.8228L46.8101 37.2902L25.6501 77.3035Z"
-          />
-          <circle cx="25" cy="25" r="25" />
-          <path
-            d="M25.5 9L28.98 20.0557H40.2414L31.1307 26.8885L34.6107 37.9443L25.5 31.1115L16.3893 37.9443L19.8693 26.8885L10.7586 20.0557H22.02L25.5 9Z"
-            fill="white"
-          />
-        </svg>
-        <h1 class="text-center mt-3">Please use a mobile device</h1>
-        <p class="lead w-50 mx-auto text-center large-screen-message mt-2">
-          Since this is app is optimised for mobile and requires the ability to
-          be able to check your location, please use a mobile device to play.
-        </p>
-        <a href="{% url 'rules' %}" class="btn btn-success mx-auto mt-2" src="/rules"
-          >Read the rules</a
-        >
       </div>
+      <a class="navbar-brand text-right col" href="/">Game Name</a>
+    </nav>
+  </header>
+  <div class="app-container container vh-100 d-md-none position-absolute">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Message that appears on larger screens -->
+  <div class="d-none d-md-block container vh-100 p-5">
+    <div
+      class="message-container border border-light d-flex flex-column justify-content-center align-items-center h-100">
+      <svg width="51" height="78" viewBox="0 0 51 78" fill="#198754" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25.6501 77.3035L3.5121 37.8228L46.8101 37.2902L25.6501 77.3035Z" />
+        <circle cx="25" cy="25" r="25" />
+        <path
+          d="M25.5 9L28.98 20.0557H40.2414L31.1307 26.8885L34.6107 37.9443L25.5 31.1115L16.3893 37.9443L19.8693 26.8885L10.7586 20.0557H22.02L25.5 9Z"
+          fill="white" />
+      </svg>
+      <h1 class="text-center mt-3">Please use a mobile device</h1>
+      <p class="lead w-50 mx-auto text-center large-screen-message mt-2">
+        Since this is app is optimised for mobile and requires the ability to
+        be able to check your location, please use a mobile device to play.
+      </p>
+      <a href="{% url 'rules' %}" class="btn btn-success mx-auto mt-2" src="/rules">Read the rules</a>
     </div>
-    <!-- FontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/e9c73d7092.js"
-      crossorigin="anonymous"
-    ></script>
+  </div>
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap 5 Scripts -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Masonry functionality for Bootstrap 5 -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-      integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
-      crossorigin="anonymous"
-      async
-    ></script>
-  </body>
+  <!-- Bootstrap 5 Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- Masonry functionality for Bootstrap 5 -->
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+    integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+    async></script>
+</body>
+
 </html>
-
