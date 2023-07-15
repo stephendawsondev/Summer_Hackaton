@@ -1,57 +1,43 @@
 {% extends "base.html" %} {% load static %} 
 
-
-<!-- This is the content of the html use the sintaxis to make it easy to read dont agroup all in one line-->
+<!-- This is the content of the html use the sintaxis to make it easy to read dont group all in one line-->
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4">Your Challenge in {{ place.city }}</h1>
-  <div class="buttons-container mx-auto w-75">
-   <p>Can you find the spot this photo was taken from?</p>
-  </div>
-
-  <!-- You have 
-    Places, Challenges, Questions objects
-  -->
   {% if places %}
-  {% for place in places %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{ place }}</h1> 
-  <!--Place havs
-      country
-      city
-      title  
-    
-    you can call it as place.country place.city etc-->
-  {% endfor %}
-
+    {% for place in places %}  <!--This is a for runing in the all places in the database  -->
+    <!-- You have Places, Challenges, Questions objects -->
+    <!--Places have place.country place.city place.title -->
+      <h1 class="app-title display-4">{{ place.city }}</h1>
+    {% endfor %}
   {% endif %}
-
-
+      
+  <h1>Challenge 1</h1> 
+  <div class="buttons-container mx-auto w-75">
+    <p>Can you find the spot this photo was taken from?</p>
+  </div>
+  
   {% if challenges %}
-  {% for challenge in challenges %}  <!--This is for running in the all places in the database  -->
-  <h1>{{ challenge }}</h1> 
-  <img src="{{ challenge.image.url }}" alt="name">  <!--Challenge havs  
-    place (related with the place where the challenge is)
-    title
-    description 
-    image
-    -->
-  {% endfor %}
-
+  <!--Challenge has place (related with the place where the challenge is),
+    title, description, image -->
+    {% for challenge in challenges %}  <!--This is for running in the all places in the database  -->
+      <img src="{{ challenge.image.url }}" alt="name">  
+    {% endfor %}
   {% endif %}
-
-
+        
+  <!-- {{ challenge }} -->
+        
   {% if questions %}
-  {% for question in questions %}  <!--This is a for runing in the all places in the database  -->
-  <h1>{{ question }}</h1> 
-  <!--Question havs  
+    <!--Question have 
     challenge (related with the challenge)
     text = models.CharField(max_length=250, unique=False)
     image
     -->
-  {% endfor %}
-
+    {% for question in questions %}  <!--This is for running in the all places in the database  -->
+      <h1>{{ question }}</h1> 
+    {% endfor %}
   {% endif %}
+  
 </section>
 
 {% endblock %}
