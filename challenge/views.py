@@ -16,13 +16,8 @@ def challenge(request, id):
     Challenge page view
     """
     challenges = Challenge.objects.filter(place = id).values()
-    city = Place.objects.filter(id = id).values("city")
+    city = Place.objects.filter(id = id).values("city").first()
     answers = Answer.objects.all()
-    try:
-        city = city[0]['city']
-    except ValueError:
-        print("Error validation")
-
     context = {
         "challenges": challenges,
         "answers": answers,
@@ -32,18 +27,13 @@ def challenge(request, id):
     return render(request, "challenge/challenge.html", context)
 
 
-def challengeJson(request, id):
+def challenge_json(request, id):
     """
     Challenge page view
     """
     challenges = Challenge.objects.filter(place = id).first()
     city = Place.objects.filter(id = id).values("city")
     answers = Answer.objects.all()
-    try:
-        city = city[0]['city']
-    except ValueError:
-        print("Error validation")
-
     context = {
         "challenges": challenges,
         "answers": answers,
@@ -57,6 +47,8 @@ def location(request):
     locations page view
     """
     places = Place.objects.all()
+    if not places:
+        places = {"none":"none"}
     context = {
         "places": places,
     }
@@ -68,17 +60,9 @@ def answer(request, id):
     """
     answer page view
     """
-    answers = Answer.objects.filter(challenge = id).values()
-    challenges = Challenge.objects.filter(place = id).values()
-    city = Place.objects.filter(id = id).values("city")
-    try:
-        city = city[0]['city']
-    except ValueError:
-        print("Error validation")
+    answers = Answer.objects.filter(challenge = id).all()
     context = {
         "answers": answers,
-        "challenges": challenges,
-        "city": city,
     }
 
     return render(request, "answer/answer.html", context)

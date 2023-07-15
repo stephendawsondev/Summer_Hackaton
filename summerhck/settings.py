@@ -96,10 +96,18 @@ WSGI_APPLICATION = "summerhck.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# Database 
+if os.environ.get('DEVELOPMENT')=="0":
+    Database = {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        } 
+else:
+    Database =  dj_database_url.parse(os.environ.get('DATABASE_URL'))
 
-DATABASES = {    
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')), 
-}
+DATABASES = {
+    'default': Database
+    }
 
 # Cloudinary storage
 
