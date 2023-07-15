@@ -41,6 +41,7 @@ class Challenge(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=50, unique=False)
     title = models.CharField(max_length=50, unique=False)
+    cordinates =  models.CharField(max_length=100, unique=False)
     description = models.CharField(max_length=250, unique=False)
     image = CloudinaryField('image', None)
     created_on = models.DateTimeField(auto_now_add=True)
