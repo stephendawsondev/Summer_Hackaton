@@ -3,6 +3,11 @@ body {
   color: wheat;
 }
 a {
-  text-decoration: none;
-  color: wheat;
+    text-decoration: none;
+    color: #7bb4ff;
+    font-size: medium;
+}
+
+a:hover {
+    font-size: large;
 }
