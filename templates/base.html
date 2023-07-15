@@ -30,6 +30,7 @@
   </head>
 
   <body>
+    <!-- App container that only appears on small screens -->
     <div class="app-container container vh-100 d-md-none">
       {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
       <a href="">Challenges Management</a>
@@ -39,6 +40,38 @@
       <a href="{% url 'account_signup' %}" class="">Register</a>
       <a href="{% url 'account_login' %}" class="">Login</a>
       {% endif %} {% block content %} {% endblock %}
+    </div>
+
+    <!-- Message that appears on larger screens -->
+    <div class="d-none d-md-block container vh-100 p-5">
+      <div
+        class="message-container border border-light d-flex flex-column justify-content-center align-items-center h-100"
+      >
+        <svg
+          width="51"
+          height="78"
+          viewBox="0 0 51 78"
+          fill="#198754"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25.6501 77.3035L3.5121 37.8228L46.8101 37.2902L25.6501 77.3035Z"
+          />
+          <circle cx="25" cy="25" r="25" />
+          <path
+            d="M25.5 9L28.98 20.0557H40.2414L31.1307 26.8885L34.6107 37.9443L25.5 31.1115L16.3893 37.9443L19.8693 26.8885L10.7586 20.0557H22.02L25.5 9Z"
+            fill="white"
+          />
+        </svg>
+        <h1 class="text-center mt-3">Please use a mobile device</h1>
+        <p class="lead w-50 mx-auto text-center large-screen-message mt-2">
+          Since this is app is optimised for mobile and requires the ability to
+          be able to check your location, please use a mobile device to play.
+        </p>
+        <a href="" class="btn btn-success mx-auto mt-2" src="/rules"
+          >Read the rules</a
+        >
+      </div>
     </div>
     <!-- FontAwesome -->
     <script
