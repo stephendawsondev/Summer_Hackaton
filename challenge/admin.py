@@ -6,7 +6,7 @@ Imports
 from django.contrib import admin
 # Internal
 # Register your models here.
-from .models import Place, Challenge, Question
+from .models import Place, Challenge, Answer
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -52,7 +52,7 @@ class ChallengeAdmin(admin.ModelAdmin):
         )
     
 
-@admin.register(Question)
+@admin.register(Answer)
 class QuestionAdmin(admin.ModelAdmin):
     """
     Admin model class For register model

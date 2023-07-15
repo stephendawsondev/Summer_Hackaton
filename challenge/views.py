@@ -6,7 +6,7 @@ Imports
 # 3rd party:
 from django.shortcuts import render
 # Internal
-from .models import Question, Challenge, Place
+from .models import Answer, Challenge, Place
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def challenge(request, id):
@@ -14,10 +14,17 @@ def challenge(request, id):
     Challenge page view
     """
     challenges = Challenge.objects.filter(place = id).values()
-    questions = Question.objects.all()
+    city = Place.objects.filter(id = id).values("city")
+    answers = Answer.objects.all()
+    try:
+        city = city[0]['city']
+    except ValueError:
+        print("Error validation")
+
     context = {
         "challenges": challenges,
-        "questions": questions,
+        "answers": answers,
+        "city": city,
     }
 
     return render(request, "challenge/challenge.html", context)
@@ -35,13 +42,13 @@ def location(request):
     return render(request, "location/location.html", context)
 
 
-def question(request, id):
+def answer(request, id):
     """
-    question page view
+    answer page view
     """
-    questions = Question.objects.filter(challenge = id).values()
+    answers = Answer.objects.filter(challenge = id).values()
     context = {
-        "questions": questions,
+        "answers": answers,
     }
 
-    return render(request, "question/question.html", context)
+    return render(request, "answer/answer.html", context)

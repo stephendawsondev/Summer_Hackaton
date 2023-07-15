@@ -11,5 +11,5 @@ from . import views
 urlpatterns = [
     path('locations/',views.location,name="location"),
     path('challenge/<int:id>/',views.challenge,name="challenge"),
-    path('questions/<int:id>/',views.question,name="question"),
+    path('answers/<int:id>/',views.answer,name="answer"),
 ]
