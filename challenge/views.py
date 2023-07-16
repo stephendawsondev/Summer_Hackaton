@@ -81,14 +81,9 @@ def change_score(request):
     score = request.POST['score']
     userId = request.POST['userId']
 
-    # if score - score.value > 0:
-
     user_points = Profile.objects.filter(user=userId).first()
 
-    print(f"These are my points {user_points}")
-
-    context = {
-
-    }
+    user_points.points += int(score)
+    user_points.save()
 
     return redirect("leaderboard")
