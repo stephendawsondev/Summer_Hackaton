@@ -1,29 +1,11 @@
 /* font imports */
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Handlee&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap');
 
-/* Initial Landing page section styles */
-.image-gallery {
-  isolation: isolate;
-  max-height: calc(100vh - 20px);
-}
-
-/* the image gallery's overlay */
-.image-gallery::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+/* App container */
+.app-container {
+  position: fixed;
   width: 100%;
-  height: 100vh;
-  max-height: 100vh;
-  background: rgba(255, 255, 255, 0.6);
-  z-index: 1;
-}
-
-.landing-section-content {
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 60px;
 }
 
 /* Form inputs */
@@ -101,7 +83,11 @@ body {
 }
 
 .display-4 {
-  font-family:'ABeeZee', Courier, monospace
+  font-family:'ABeeZee', Courier, monospace;
   font-size: calc(1.375rem + 1.5vw);
   font-weight: 500;
+}
+
+nav {
+  z-index: 1;
 }
