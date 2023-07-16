@@ -1,12 +1,16 @@
 {% extends "base.html" %} {% load static %}
 
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/rules/style.css' %}" />
+{% endblock %}
+
 <!-- This is the content of the html use the sintaxis to make it easy to read dont agroup all in one line-->
 {% block content %}
 
-<section class="container">
-    <h2>Rules</h2>
-    <div class="how-to-play">
-        <h3>How to Play</h3>
+<section class="container mt-5">
+    <h1 class="app-title display-4">Rules</h1>
+    <div class="content-box how-to-play">
+        <h2>How to Play</h2>
         <ol>
             <li>
                 Select a location for your challenge
