@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const foundItButton = document?.querySelector(".found-it");
     foundItButton.addEventListener("click", async () => {
       try {
+        toggleLoadingSpinner();
         const challengeCoordinates = await getChallengeCoordinates();
         const userCoordinates = await getLocation();
 
@@ -14,11 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (distance < 0.05) {
-          // User is within 50 meters of the challenge
-          // Perform further operations
+          alert("You found it!");
         } else {
-          // User is not within 50 meters of the challenge
-          // Perform further operations
+          alert("You are not close enough to the challenge!");
         }
 
         console.log(distance.toFixed(2));
@@ -26,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error(error);
         // Handle error appropriately
       }
+      toggleLoadingSpinner();
     });
   }
 });
@@ -102,3 +102,50 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
  * Source: https://stackoverflow.com/a/27943/12327909
  */
 const deg2rad = (deg) => deg * (Math.PI / 180);
+
+/*
+ * Function that toggles a loading spinner
+ * overlay on the page
+ */
+const toggleLoadingSpinner = () => {
+  if (document.querySelector(".overlay")) {
+    document.querySelector(".overlay").remove();
+  } else {
+    // create overlay
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+
+    // spinner container
+    const spinnerContainer = document.createElement("div");
+    spinnerContainer.classList.add("spinner-container");
+
+    // create spinner
+    const spinner = document.createElement("div");
+    spinner.classList.add("spinner");
+
+    // spinner text
+    let spinnerText = document.createElement("p");
+    spinnerText.classList.add("spinner-text");
+    spinnerText.innerText = "Checking your location";
+
+    setInterval(() => {
+      if (spinnerText.innerText == "Checking your location...") {
+        spinnerText.innerText = "Checking your location";
+      } else {
+        spinnerText.innerText += ".";
+      }
+    }, 500);
+
+    // append spinner to spinner container
+    spinnerContainer.appendChild(spinner);
+
+    // append spinner text to spinner container
+    spinnerContainer.appendChild(spinnerText);
+
+    // append spinner to overlay
+    overlay.appendChild(spinnerContainer);
+
+    // append overlay to body
+    document.body.appendChild(overlay);
+  }
+};
