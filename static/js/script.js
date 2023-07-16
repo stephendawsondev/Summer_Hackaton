@@ -128,13 +128,15 @@ const toggleLoadingSpinner = () => {
     spinnerText.classList.add("spinner-text");
     spinnerText.innerText = "Checking your location";
 
-    setInterval(() => {
+    const loadingDots = () => {
       if (spinnerText.innerText == "Checking your location...") {
         spinnerText.innerText = "Checking your location";
       } else {
         spinnerText.innerText += ".";
       }
-    }, 500);
+    };
+
+    setInterval(loadingDots, 500);
 
     // append spinner to spinner container
     spinnerContainer.appendChild(spinner);
