@@ -2,26 +2,19 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4 mt-5">Your Challenge in {{ city.city }}</h1>
+  <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
 
-  {% if challenges %}
-    {% for challenge in challenges %} 
-      <div class="buttons-container mx-auto w-75 ">
-        <p>{{ challenge.quiz }}</p>
-      </div>
-    {% endfor %}
-  {% endif %}
-  
   {% if answers %}
-    {% for answer in answers %}
-    <div>
+  {% for answer in answers %}
+  <div>
+      <p>{{ answers.challenge }}</p>
       <p>{{ answer.text }}</p>
     </div>
     {% endfor %}
   {% endif %}
 </section>
 <div class="return-to-dashboard">
-  <a href="{%url 'challenge' challenges.first.id%}" class="btn btn-success w-100">Back</a>
+  <a href="{%url 'challenge' answers.first.id%}" class="btn btn-success w-100">Back</a>
 </div>
 
 {% endblock %}
