@@ -19,6 +19,7 @@ class Place(models.Model):
     city = models.CharField(max_length=50, unique=False)
     slug = models.SlugField(max_length=50, unique=False)
     title = models.CharField(max_length=50, unique=False)
+    image = CloudinaryField('image',default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     class Meta:
         """
