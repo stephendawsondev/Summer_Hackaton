@@ -9,8 +9,10 @@ from . import views
 
 
 urlpatterns = [
-    path('locations/',views.location,name="location"),
-    path('challenge/<int:id>/',views.challenge,name="challenge"),
-    path('json/<int:id>/',views.challenge_json,name="challengeJson"),
-    path('answers/<int:id>/',views.answer,name="answer"),
+    path('locations/', views.location, name="location"),
+    path('challenge/<int:id>/', views.challenge, name="challenge"),
+    path('json/<int:id>/', views.challenge_json, name="challengeJson"),
+    path('answers/<int:id>/', views.answer, name="answer"),
+    path('change-score/', views.change_score, name="changeScore"),
+    path('challenges/json', views.all_challenges_json, name="allChallengesJson"),
 ]
