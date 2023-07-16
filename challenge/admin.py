@@ -17,7 +17,7 @@ class PlaceAdmin(admin.ModelAdmin):
     """
     list_display = (
         'title',
-        'created_on'
+        'created_on',
         )
     prepopulated_fields = {
         'slug': ('title',)
@@ -59,5 +59,6 @@ class QuestionAdmin(admin.ModelAdmin):
     """
     list_display = (
         'text',
-        'created_on'
+        'created_on',
+        'confirmation'
         )

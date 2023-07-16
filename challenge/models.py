@@ -66,6 +66,7 @@ class Answer(models.Model):
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)
     text = models.CharField(max_length=250, unique=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    confirmation = models.BooleanField()
     class Meta:
         """
         Items Order
