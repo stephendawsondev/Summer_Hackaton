@@ -11,3 +11,15 @@ a {
 a:hover {
     font-size: large;
 }
+
+/* Sub-title */
+.lead {
+  font-size: 1.8rem;
+}
+.w-50 {
+  width: 60%!important;
+}
+.navbar-brand {
+  padding: 0;
+  font-size: 1.8em;
+}
