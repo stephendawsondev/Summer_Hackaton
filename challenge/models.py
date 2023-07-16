@@ -58,6 +58,19 @@ class Challenge(models.Model):
         """
         return str(self.quiz)
 
+    def serialize(self):
+        """
+        Serialize the item
+        """
+        return {
+            "slug": self.slug,
+            "quiz": self.quiz,
+            "cordinates": self.cordinates,
+            "description": self.description,
+            "created_on": self.created_on,
+            "image": ("https://res.cloudinary.com/herokupp4/image/upload/v1689526831/"+ str(self.image)),
+            }
+
 
 class Answer(models.Model):
     """
@@ -66,6 +79,7 @@ class Answer(models.Model):
     challenge = models.ForeignKey(Challenge, on_delete=models.CASCADE)
     text = models.CharField(max_length=250, unique=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    confirmation = models.BooleanField()
     class Meta:
         """
         Items Order

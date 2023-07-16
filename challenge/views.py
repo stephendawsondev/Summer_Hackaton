@@ -4,19 +4,21 @@ Imports
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # 3rd party:
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # Internal
 from .models import Answer, Challenge, Place
 from django.http import JsonResponse
+from leaderboard.models import Profile
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 def challenge(request, id):
     """
     Challenge page view
     """
-    challenges = Challenge.objects.filter(place = id).values()
-    city = Place.objects.filter(id = id).values("city").first()
+    challenges = Challenge.objects.filter(place=id).values()
+    city = Place.objects.filter(id=id).values("city").first()
     answers = Answer.objects.all()
     context = {
         "challenges": challenges,
@@ -29,17 +31,18 @@ def challenge(request, id):
 
 def challenge_json(request, id):
     """
-    Challenge page view
+    Api json file to cordinates
     """
-    challenges = Challenge.objects.filter(place = id).first()
-    city = Place.objects.filter(id = id).values("city")
-    answers = Answer.objects.all()
-    context = {
-        "challenges": challenges,
-        "answers": answers,
-        "city": city,
-    }
+    challenges = Challenge.objects.filter(place=id).first()
     return JsonResponse({"coordinates": challenges.cordinates})
+
+def all_challenges_json(request):
+    """
+    Api json challenge
+    """
+    challenges = Challenge.objects.all()
+
+    return JsonResponse([challenge.serialize() for challenge in challenges], safe=False)
 
 
 def location(request):
@@ -48,7 +51,7 @@ def location(request):
     """
     places = Place.objects.all()
     if not places:
-        places = {"none":"none"}
+        places = {"none": "none"}
     context = {
         "places": places,
     }
@@ -60,9 +63,9 @@ def answer(request, id):
     """
     answer page view
     """
-    challenges = Challenge.objects.filter(place = id).values()
-    answers = Answer.objects.filter(challenge = id).all()
-    city = Place.objects.filter(id = id).values("city").first()
+    challenges = Challenge.objects.filter(place=id).values()
+    answers = Answer.objects.filter(challenge=id).all()
+    city = Place.objects.filter(id=id).values("city").first()
     context = {
         "challenges": challenges,
         "answers": answers,
@@ -70,3 +73,18 @@ def answer(request, id):
     }
 
     return render(request, "answer/answer.html", context)
+
+
+def change_score(request):
+    """
+    change_score page view
+    """
+    score = request.POST['score']
+    userId = request.POST['userId']
+
+    user_points = Profile.objects.filter(user=userId).first()
+
+    user_points.points += int(score)
+    user_points.save()
+
+    return redirect("leaderboard")

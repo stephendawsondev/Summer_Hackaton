@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.indexOf("/challenge/") > -1) {
+    const foundItForm = document.querySelector(".found-it-form");
     const foundItButton = document?.querySelector(".found-it");
-    foundItButton.addEventListener("click", async () => {
+    const skipButton = document?.querySelector(".skip");
+    const scoreInput = document.querySelector("input[name='score']");
+
+    foundItButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+
       try {
         toggleLoadingSpinner();
         const challengeCoordinates = await getChallengeCoordinates();
@@ -15,9 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (distance < 0.05) {
-          alert("You found it!");
+          scoreInput.value = 1;
+          displaySuccessOrFailModal('CONGRATS! \n🥳', 'You earned one point for finding this location!', 'Dismiss');
+          foundItForm.submit();
         } else {
-          alert("You are not close enough to the challenge!");
+          // display not close enough message
+          displaySuccessOrFailModal('Not close enough yet! \n😬', 'You need to be within 50 meters of the challenge to find it.', 'Try again');
         }
 
         console.log(distance.toFixed(2));
@@ -26,6 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Handle error appropriately
       }
       toggleLoadingSpinner();
+    });
+
+    skipButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      scoreInput.value = -1;
+      foundItForm.submit();
     });
   }
 });
@@ -57,8 +72,8 @@ const getLocation = () =>
  */
 const getChallengeCoordinates = async () => {
   let urlNum = window.location.pathname.split("/")[2];
-
-  const response = await fetch(`http://127.0.0.1:8000/json/${urlNum}/`, {
+  
+  const response = await fetch(`${window.location.origin}/json/${urlNum}/`, {
     headers: {
       Accept: "application/json",
       "X-Requested-With": "XMLHttpRequest",
@@ -128,13 +143,15 @@ const toggleLoadingSpinner = () => {
     spinnerText.classList.add("spinner-text");
     spinnerText.innerText = "Checking your location";
 
-    setInterval(() => {
+    const loadingDots = () => {
       if (spinnerText.innerText == "Checking your location...") {
         spinnerText.innerText = "Checking your location";
       } else {
         spinnerText.innerText += ".";
       }
-    }, 500);
+    };
+
+    setInterval(loadingDots, 500);
 
     // append spinner to spinner container
     spinnerContainer.appendChild(spinner);
@@ -149,3 +166,33 @@ const toggleLoadingSpinner = () => {
     document.body.appendChild(overlay);
   }
 };
+
+const displaySuccessOrFailModal = (headingText, paragraphText, buttonText) => {
+  const dialog = document.createElement('dialog');
+  
+  const heading = document.createElement('h2');
+  heading.classList.add('text-center', 'display-3');
+  heading.innerText = headingText;
+
+  const message = document.createElement('p');
+  message.innerText = paragraphText;
+  message.classList.add('mb-4', 'text-center');
+
+  const submitButton = document.createElement('button');
+  submitButton.innerText = buttonText;
+  submitButton.classList.add('btn', 'btn-success', 'w-100');
+
+  // Dismiss the dialog when the "Submit" button is clicked
+  submitButton.addEventListener('click', () => {
+    dialog.close();
+  });
+
+  dialog.appendChild(heading);
+  dialog.appendChild(message);
+  dialog.appendChild(submitButton);
+
+  document.body.appendChild(dialog);
+  dialog.showModal();
+};
+
+
