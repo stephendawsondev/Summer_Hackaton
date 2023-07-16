@@ -60,9 +60,13 @@ def answer(request, id):
     """
     answer page view
     """
+    challenges = Challenge.objects.filter(place = id).values()
     answers = Answer.objects.filter(challenge = id).all()
+    city = Place.objects.filter(id = id).values("city").first()
     context = {
+        "challenges": challenges,
         "answers": answers,
+        "city": city,
     }
 
     return render(request, "answer/answer.html", context)
