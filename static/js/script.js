@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.indexOf("/challenge/") > -1) {
+    const foundItForm = document.querySelector(".found-it-form");
     const foundItButton = document?.querySelector(".found-it");
-    foundItButton.addEventListener("click", async () => {
+    const scoreInput = document.querySelector("input[name='score']");
+
+    foundItButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+
       try {
         toggleLoadingSpinner();
         const challengeCoordinates = await getChallengeCoordinates();
@@ -15,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (distance < 0.05) {
-          alert("You found it!");
+          scoreInput.value = 1;
+          foundItForm.submit();
         } else {
-          alert("You are not close enough to the challenge!");
+          // display not close enough message
+          displayNotCloseEnoughModal();
         }
 
         console.log(distance.toFixed(2));
@@ -151,3 +158,34 @@ const toggleLoadingSpinner = () => {
     document.body.appendChild(overlay);
   }
 };
+
+const displayNotCloseEnoughModal = () => {
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('not-close-enough-modal');
+  
+  const heading = document.createElement('h2');
+  heading.classList.add('text-center', 'display-3');
+  heading.innerText = 'Not close enough yet! \n😬';
+
+  const message = document.createElement('p');
+  message.innerText = 'You need to be within 50 meters of the challenge to find it.';
+  message.classList.add('mb-4');
+
+  const tryAgainButton = document.createElement('button');
+  tryAgainButton.innerText = 'Try again';
+  tryAgainButton.classList.add('btn', 'btn-success', 'w-100');
+
+  // Dismiss the dialog when the "Try again" button is clicked
+  tryAgainButton.addEventListener('click', () => {
+    dialog.close();
+  });
+
+  dialog.appendChild(heading);
+  dialog.appendChild(message);
+  dialog.appendChild(tryAgainButton);
+
+  document.body.appendChild(dialog);
+  dialog.showModal();
+};
+
+

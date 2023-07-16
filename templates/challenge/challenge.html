@@ -4,7 +4,6 @@
 
 <section class="initial-landing-section container">
   <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
-  <h1>Score: {{ request.user.id }}</h1>
   <div class="buttons-container mx-auto w-75">
     <p>Can you find the spot this photo was taken from?</p>
   </div>
@@ -15,42 +14,46 @@
   <div class="buttons-container mx-auto w-75">
     <p>You've successfully identified the location of this photograph!</p>
   </div> -->
-  {% if challenges %} {% for challenge in challenges %}
-  <!--This is a for runing in the all places in the database  -->
-  <a href="{% url 'answer' challenge.id %}">
-    <img class="chcard" src="{{challenge.image.url}}" alt="name" />
-  </a>
-  <!--Challenge havs  
-      place (related with the place where the challenge is)
-      quiz
-      description 
-      image
-    -->
+  {% if challenges %} 
+  
+  {% for challenge in challenges %}
+    <!--This is a for runing in the all places in the database  -->
+    <a href="{% url 'answer' challenge.id %}">
+      <img class="chcard" src="{{challenge.image.url}}" alt="name" />
+    </a>
+    <!--Challenge havs  
+        place (related with the place where the challenge is)
+        quiz
+        description 
+        image
+      -->
 
-  <!-- Take the Quiz goes to /answers/6/ -->
-  <a class="btn quiz btn-light" href="{% url 'answer' challenge.id %}"
-    >Take the Quiz</a
-  >
-  {% endfor %} {% endif %}
+    <!-- Take the Quiz goes to /answers/6/ -->
+    <a class="btn quiz btn-light" href="{% url 'answer' challenge.id %}"
+      >Take the Quiz</a
+    >
+    {% endfor %} 
+  {% endif %}
 
   <form
     action="{% url 'changeScore' %}"
     method="post"
-    class="w-100 p-0 form-group text-left rounded"
+    class="found-it-form"   
   >
     {% csrf_token %}
-    <input type="number" name="score" id="score" value="5" />
+    <input type="hidden" name="score" id="score" value="0" />
     <input
-      type="number"
+      type="hidden"
       name="userId"
       id="userId"
       value="{{ request.user.id }}"
     />
 
     <button class="btn found-it btn-light" type="submit">Found It!</button>
+    <button class="btn skip btn-light" type="submit">Skip (-1 point)</button>
   </form>
 
-  <button class="btn skip btn-light" type="submit">Skip (-1 point)</button>
+  
 
   <!-- if found-it == cordinates:
             5 points and new button -->
