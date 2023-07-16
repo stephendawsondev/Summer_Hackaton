@@ -2,6 +2,32 @@ body {
   background-color: #2e2e2e;
   color: wheat;
 }
+
+/* Initial Landing page section styles */
+.image-gallery {
+  isolation: isolate;
+  max-height: calc(100vh - 52px);
+}
+
+/* the image gallery's overlay */
+.image-gallery::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+.landing-section-content {
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 a {
     text-decoration: none;
     color: #7bb4ff;
@@ -16,9 +42,11 @@ a:hover {
 .lead {
   font-size: 1.8rem;
 }
+
 .w-50 {
   width: 60%!important;
 }
+
 .navbar-brand {
   padding: 0;
   font-size: 1.8em;
