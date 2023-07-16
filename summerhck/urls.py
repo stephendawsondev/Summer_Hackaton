@@ -23,4 +23,5 @@ urlpatterns = [
     path('',include('dashboard.urls')),
     path('', include('allauth.urls')),
     path('', include('challenge.urls')),
+    path('', include('leaderboard.urls')),
 ]

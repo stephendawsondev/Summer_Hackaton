@@ -9,5 +9,7 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.index,name="index"),
+    path('leaderboard/',views.leaderboard,name="leaderboard"),
+    path('mypoints/<int:id>',views.my_points,name="mypoints"),
+
 ]

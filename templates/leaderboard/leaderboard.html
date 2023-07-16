@@ -1,7 +1,23 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 
 {%block content%}
-<h1>LeaderBoard</h1>
-
+    <h1>LeaderBoard</h1>
+    <ul>        
+    {% if users and scores%}
+        {% for userl in users %}
+        <li>
+        {{userl}}
+            {% for score in scores %}
+                {% if userl == score.user %}
+                :{{score}}
+                {% endif %}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+    <div class="return-to-dashboard">
+        <a href="{%url 'index'%}" class="btn btn-success w-100">Back</a>
+    </div>
 {% endblock %}

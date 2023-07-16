@@ -22,8 +22,3 @@ def rules(request):
     """
     return render(request, "rules/rules.html")
 
-def leaderboard(request):
-    """
-    Rules page view
-    """
-    return render(request, "leaderboard/leaderboard.html")

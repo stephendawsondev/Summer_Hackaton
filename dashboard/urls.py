@@ -11,5 +11,4 @@ from . import views
 urlpatterns = [
     path('',views.index,name="index"),
     path('rules/',views.rules,name="rules"),
-    path('leaderboard/',views.leaderboard,name="leaderboard"),
 ]

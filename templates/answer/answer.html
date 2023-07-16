@@ -28,5 +28,7 @@
 
   {% endif %}
 </section>
-
+<div class="return-to-dashboard">
+  <a href="{%url 'challenge' answers.first.id%}" class="btn btn-success w-100">Back</a>
+</div>
 {% endblock %}
