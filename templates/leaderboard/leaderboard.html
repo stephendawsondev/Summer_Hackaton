@@ -6,14 +6,14 @@
     <h1 class="app-title display-4">LeaderBoard</h1>
     <ul>        
     {% if users and scores%}
-        {% for userl in users %}
+        {% for score in scores %}
         <li>
-        {{userl}}
-            {% for score in scores %}
+            {% for userl in users %}
                 {% if userl == score.user %}
-                :{{score}}
+                {{userl}}
                 {% endif %}
             {% endfor %}
+        :{{score}}
         </li>
         {% endfor %}
     {% endif %}

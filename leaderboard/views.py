@@ -16,7 +16,7 @@ def leaderboard(request):
     Rules page view
     """
     users = User.objects.all()
-    scores = Profile.objects.all()
+    scores = Profile.objects.order_by("-points")
     context = {
         'users': users,
         'scores': scores,
