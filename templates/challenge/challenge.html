@@ -20,7 +20,7 @@
   {% if challenges %}
     {% for challenge in challenges %}  <!--This is a for runing in the all places in the database  -->
     <a href="{% url 'answer' challenge.id %}">
-      <img class="w-100"  src="{{challenge.image.url}}" alt="name">  
+      <img class="chcard"  src="{{challenge.image.url}}" alt="name">  
     </a>
     <!--Challenge havs  
       place (related with the place where the challenge is)
