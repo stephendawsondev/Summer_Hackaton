@@ -23,7 +23,7 @@ class PlaceAdmin(admin.ModelAdmin):
         'slug': ('title',)
         }
     search_fields = [
-        'title'
+        'title',
         ]
     list_filter = (
         'title',
