@@ -48,8 +48,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              {% if request.user.is_authenticated %} {% if request.user.is_superuser %}
-              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
+              </li>
+              {% if request.user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'mypoints'  request.user.id %}">My Points</a>
               </li>
@@ -58,15 +60,12 @@
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
               </li>
-              {% endif %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>
