@@ -21,44 +21,43 @@
     <a href="{% url 'answer' challenge.id %}">
       <img class="chcard" src="{{challenge.image.url}}" alt="name" />
     </a>
-    <!--Challenge havs  
+    <!--Challenges have: 
         place (related with the place where the challenge is)
         quiz
         description 
         image
       -->
 
-    <!-- Take the Quiz goes to /answers/6/ -->
-    <a class="btn quiz btn-light" href="{% url 'answer' challenge.id %}"
-      >Take the Quiz</a
+    <form
+      action="{% url 'changeScore' %}"
+      method="post"
+      class="found-it-form"   
     >
+      {% csrf_token %}
+      <input type="hidden" name="score" id="score" value="0" />
+      <input
+        type="hidden"
+        name="userId"
+        id="userId"
+        value="{{ request.user.id }}"
+      />
+
+    <button class="btn mt-3 w-100 found-it btn-success" type="submit">Found It!</button>
+    <a class="d-block mt-1 mx-auto w-75 text-center text-light skip" type="submit">Skip (-1 point)</button>
+    </form>
+
+    <!-- Take the Quiz goes to /answers/6/ -->
+    <a class="btn d-block mt-2 mx-auto w-75 quiz btn-light" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
     {% endfor %} 
   {% endif %}
 
-  <form
-    action="{% url 'changeScore' %}"
-    method="post"
-    class="found-it-form"   
-  >
-    {% csrf_token %}
-    <input type="hidden" name="score" id="score" value="0" />
-    <input
-      type="hidden"
-      name="userId"
-      id="userId"
-      value="{{ request.user.id }}"
-    />
-
-    <button class="btn found-it btn-light" type="submit">Found It!</button>
-    <button class="btn skip btn-light" type="submit">Skip (-1 point)</button>
-  </form>
-
+  
   
 
   <!-- if found-it == cordinates:
             5 points and new button -->
 </section>
 <div class="return-to-dashboard">
-  <a href="{%url 'location'%}" class="btn btn-success w-100">Back</a>
+  <a href="{%url 'location' %}" class="btn mt-3 btn-success w-100">Back</a>
 </div>
 {% endblock %}
