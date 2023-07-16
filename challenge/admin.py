@@ -24,7 +24,6 @@ class PlaceAdmin(admin.ModelAdmin):
         }
     search_fields = [
         'title',
-        'image',
         ]
     list_filter = (
         'title',
