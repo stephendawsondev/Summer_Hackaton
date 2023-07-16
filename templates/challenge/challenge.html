@@ -8,7 +8,7 @@
 
 <section class="initial-landing-section container mt-5">
   <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
-  <div class="buttons-container mx-auto w-75">
+  <div class="buttons-container mx-auto">
    <p>Can you find the spot this photo was taken from?</p>
   </div>
   <!--TO DO -->
@@ -31,18 +31,18 @@
     -->
       
     <!-- Take the Quiz goes to /answers/6/ -->
-    <a class="btn quiz btn-light" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
+    <a class="btn quiz btn-success" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
     {% endfor %}
     {% endif %}
     
 
-    <button class="btn found-it btn-light" type="submit">Found It!</button>
+    <button class="btn found-it btn-success" type="submit">Found It!</button>
     <button class="btn skip btn-light" type="submit">Skip (-1 point)</button>
     <!-- if found-it == cordinates:
             5 points and new button -->
-
+    <div class="return-to-dashboard">
+      <a href="{%url 'location'%}" class="btn back btn-light w-75">Back</a>
+    </div>
 </section>
-<div class="return-to-dashboard">
-  <a href="{%url 'location'%}" class="btn btn-success w-100">Back</a>
-</div>
+
 {% endblock %}
