@@ -63,8 +63,11 @@ class Challenge(models.Model):
         Serialize the item
         """
         return {
+            "slug": self.slug,
             "quiz": self.quiz,
+            "cordinates": self.cordinates,
             "description": self.description,
+            "created_on": self.created_on,
             "image": ("https://res.cloudinary.com/herokupp4/image/upload/v1689526831/"+ str(self.image)),
             }
 
