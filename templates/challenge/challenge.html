@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% load static %} 
+{% extends "base.html" %}
+{% load static %} 
 
 
 {% block extra_css %} 
@@ -21,9 +22,7 @@
   
   {% for challenge in challenges %}
     <!--This is a for runing in the all places in the database  -->
-    <a href="{% url 'answer' challenge.id %}">
-      <img class="chcard" src="{{challenge.image.url}}" alt="name" />
-    </a>
+    <img class="chcard" src="{{challenge.image.url}}" alt="name" />
     <!--Challenges have: 
         place (related with the place where the challenge is)
         quiz
