@@ -72,8 +72,8 @@ const getLocation = () =>
  */
 const getChallengeCoordinates = async () => {
   let urlNum = window.location.pathname.split("/")[2];
-
-  const response = await fetch(`http://127.0.0.1:8000/json/${urlNum}/`, {
+  
+  const response = await fetch(`${window.location.origin}/json/${urlNum}/`, {
     headers: {
       Accept: "application/json",
       "X-Requested-With": "XMLHttpRequest",
