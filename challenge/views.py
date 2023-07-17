@@ -102,8 +102,8 @@ def checkanswer(request):
     userRef = User.objects.get(pk=userId)
     flag=True
     for profile in user_profile.done.all():
-        confirm_user = (user_profile != profile)
-        if confirm_user is True: flag= False
+        confirm_user = (user_profile == profile)
+        if confirm_user is True: flag = False
     if answer.confirmation is True and flag :
         user_profile.done.add(answer)        
         answer.save()
