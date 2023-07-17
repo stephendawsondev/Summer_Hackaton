@@ -101,10 +101,11 @@ def checkanswer(request):
     user_profile = Profile.objects.filter(user=userId).first()
     userRef = User.objects.get(pk=userId)
     flag=True
-    for profile in user_profile.done.all():
-        confirm_user = (user_profile != profile)
-        if confirm_user is True: flag= False
-    if answer.confirmation is True:
+    for done in user_profile.done.all():
+        if (answer == done) : 
+            flag = False
+    print( flag)
+    if (answer.confirmation is True) and flag :
         user_profile.done.add(answer)        
         answer.save()
         user_profile.points += 5
