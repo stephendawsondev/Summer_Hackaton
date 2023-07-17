@@ -1,23 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block content%}
+{% block content %}
 <section class="container mt-5">
     <h1 class="app-title display-4">LeaderBoard</h1>
-    <ul>        
-    {% if users and scores%}
-        {% for score in scores %}
-        <li>
-            {% for userl in users %}
-                {% if userl == score.user %}
-                {{userl}}
-                {% endif %}
-            {% endfor %}
-        :{{score}}
-        </li>
+    {% if users and scores %}
+    <table class="leaderboard-table w-100 table text-light text-center">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for score in scores|dictsortreversed:"points" %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{% for userl in users %}{% if userl == score.user %}{{userl}}{% endif %}{% endfor %}</td>
+                <td>{{score}}</td>
+            </tr>
         {% endfor %}
+        </tbody>
+      </table>
     {% endif %}
-    </ul>
+
     <div class="return-to-dashboard">
         <a href="{%url 'index'%}" class="btn back btn-success w-75">Back</a>
     </div>
