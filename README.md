@@ -4,7 +4,6 @@
   <img src="static/images/mosaic-images-webp-smaller/checkmate_main_img_readme.png" alt="landing_page">
 </div>
 
-
 ## Introduction
 
 [Your Outdoors](https://suns-goods-1564630265ef.herokuapp.com/) is an interactive location based game designed to encourage people to go outdoors and explore their local area. It offers the user challenges in the form of a photograph, displaying a distinctive landmark or feature in their area. To complete the challenge they have to locate the feature and identify the spot the photograph was taken from. Users are awarded points when they complete challenges and can compare their progress with other users.
@@ -92,9 +91,8 @@ Appears on all pages other than landing page.
 -   Contains option to go 'back' to previous page.
 
 <div align="center">
-  <img src="static/images/mosaic-images-webp-smaller/rules_readme.png" alt="landing_page">
+  <img src="static/images/mosaic-images-webp-smaller/rules_readme(1).png" alt="landing_page">
 </div>
-
 
 ### Leaderboard
 
@@ -114,6 +112,10 @@ Appears on all pages other than landing page.
 
 Wireframes: https://www.figma.com/file/33kwyBIsqkOHgrO7CeUuoi/Summer-coding?type=design&node-id=0-1&mode=design&t=HcV9nhiV3M36kXZP-
 
+<div align="center">
+  <img src="static/images/mosaic-images-webp-smaller/wireframes_figma_readme.png" alt="landing_page">
+</div>
+
 ## Tech
 
 In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
@@ -127,12 +129,10 @@ In the tech section, we provide information about the technology stack, dependen
 
 ## Frameworks
 
-- Bootstrap4
-- Bootstrap5
- 
- * Used for basic styles and outline.
+-   Bootstrap4
+-   Bootstrap5
 
-
+*   Used for basic styles and outline.
 
 ## Deployment
 
