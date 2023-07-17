@@ -54,22 +54,6 @@
     </form>
 
     <!-- Take the Quiz goes to /answers/6/ -->
-<<<<<<< HEAD
-    <a class="btn quiz btn-success" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
-    {% endfor %}
-    {% endif %}
-    
-
-    <button class="btn found-it btn-success" type="submit">Found It!</button>
-    <button class="btn skip btn-light" type="submit">Skip (-1 point)</button>
-    <!-- if found-it == cordinates:
-            5 points and new button -->
-    <div class="return-to-dashboard">
-      <a href="{%url 'location'%}" class="btn back btn-light w-75">Back</a>
-    </div>
-</section>
-
-=======
     <a class="btn d-block mt-2 mx-auto w-75 quiz btn-light" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
     {% endfor %} 
   {% endif %}
@@ -83,5 +67,4 @@
 <div class="return-to-dashboard">
   <a href="{%url 'location' %}" class="btn mt-3 btn-success w-100">Back</a>
 </div>
->>>>>>> ab5c87f9e27252a76832c3031c0a4bdac6d3d653
 {% endblock %}
