@@ -1,17 +1,23 @@
-{% extends "base.html" %} {% load static %} 
+{% extends "base.html" %} {% load static %}
 {% block content %}
 
 <section class="initial-landing-section container">
   <h1 class="app-title display-4">Your Challenge in {{ challenges.quiz }}</h1>
-
   {% if answers %}
-    {% for answer in answers %}
-      <div>
-        <p>{{ answer.challenge }}</p>
-        <p>{{ answer.text }}</p>
-      </div>
-    {% endfor %}
+  {% for answer in answers %}
+  <form action="{% url 'checkanswer' %}" method="post" class="found-it-form">
+    {% csrf_token %}
+    <input type="hidden" name="answer" id="answer.id" value="{{  answer.id }}" />
+    <input type="hidden" name="userId" id="userId" value="{{ request.user.id }}" />
+
+    <div>
+      <p></p>
+    </div>
+    <button class="btn mt-3 w-100 found-it btn-success" type="submit">{{ answer.text }}</button>
+  </form>
+  {% endfor %}
   {% endif %}
+
 </section>
 <div class="return-to-dashboard">
   <a href="{%url 'challenge' challenges.place.id%}" class="btn back btn-success w-75">Back</a>

@@ -88,3 +88,19 @@ def change_score(request):
     user_points.save()
 
     return redirect("leaderboard")
+
+
+def checkanswer(request):
+    """
+    change_score page view
+    """
+    answer = request.POST['answer']
+    userId = request.POST['userId']
+    answer = Profile.objects.filter(user=answer).first()
+    user_points = Profile.objects.filter(user=userId).first()
+
+    if answer:
+        user_points.points += 5
+        user_points.save()
+
+    return redirect("leaderboard")

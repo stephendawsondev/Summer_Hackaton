@@ -14,5 +14,6 @@ urlpatterns = [
     path('json/<int:id>/', views.challenge_json, name="challengeJson"),
     path('answers/<int:id>/', views.answer, name="answer"),
     path('change-score/', views.change_score, name="changeScore"),
+    path('check/', views.checkanswer, name="checkanswer"),
     path('challenges/json', views.all_challenges_json, name="allChallengesJson"),
 ]
