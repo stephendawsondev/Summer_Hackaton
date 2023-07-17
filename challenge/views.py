@@ -112,4 +112,4 @@ def checkanswer(request):
         user_profile.save()
         return redirect("leaderboard")
     else:
-        return redirect("location")
+        return redirect("leaderboard")

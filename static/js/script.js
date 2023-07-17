@@ -43,7 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
       foundItForm.submit();
     });
   }
+  else if (window.location.pathname.indexOf("/answers/") > -1) {
+    const radioButtons = document.querySelectorAll("input[name='radio-answer']");
+    for (
+      const button of radioButtons 
+    ) {
+      button.addEventListener("click", () => updateAnswer(event))
+    }
+  }
 });
+
+function updateAnswer(event) {
+  let answerInput = document.querySelector("input[name='answer']");
+  const selectedValue = event.target.id
+  answerInput.value = selectedValue;
+}
 
 /*
  * Function that requests access to
@@ -194,5 +208,3 @@ const displaySuccessOrFailModal = (headingText, paragraphText, buttonText) => {
   document.body.appendChild(dialog);
   dialog.showModal();
 };
-
-

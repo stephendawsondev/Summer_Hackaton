@@ -3,22 +3,33 @@
 
 <section class="initial-landing-section container">
   <h1 class="app-title display-4 mt-4">Your Challenge in {{ city.city }}</h1>
-  <div class="buttons-container mx-auto mt-5">
-    <p>{{ challenges.quiz }}</p>
-  </div>
-  {% if answers %}
-  {% for answer in answers %}
-  <form action="{% url 'checkanswer' %}" method="post" class="found-it-form">
-    {% csrf_token %}
-    <input type="hidden" name="answer" id="answer.id" value="{{  answer.id }}" />
-    <input type="hidden" name="userId" id="userId" value="{{ request.user.id }}" />
 
+  {% if answers %}
+  <form action="{% url 'checkanswer' %}" method="post" class="answer-form">
+
+    {% csrf_token %}
+    <input type="hidden" name="answer" id="answer" value="answer-1" />
+    <input type="hidden" name="userId" id="userId" value="{{ request.user.id }}" />
     <div>
-      <p></p>
+      <fieldset>
+        <legend>{{ challenges.quiz }}</legend>
+        {% for answer in answers %}
+
+        <label>
+          {{ answer.text }}
+          <input type="radio" name="radio-answer" id="{{ answer.id }}">
+        </label>
+        {% endfor %}
+      </fieldset>
     </div>
-    <button class="btn mt-3 w-100 found-it btn-success" type="submit">{{ answer.text }}</button>
+    {% for answer in answers %}
+      {% if answer.confirmation == True %}
+        <input type="hidden" name="correct-answer" value="{{ answer.text }}">
+      {% endif %}
+    {% endfor %}
+    
+    <button class="btn mt-3 w-100 found-it btn-success" type="submit">Submit</button>
   </form>
-  {% endfor %}
   {% endif %}
 
 </section>
