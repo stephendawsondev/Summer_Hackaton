@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from .models import Answer, Challenge, Place
 from django.http import JsonResponse
 from leaderboard.models import Profile
+from django.contrib.auth.models import User
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -94,13 +95,21 @@ def checkanswer(request):
     """
     change_score page view
     """
-    answer = request.POST['answer']
+    answerID = request.POST['answer']
     userId = request.POST['userId']
-    answer = Profile.objects.filter(user=answer).first()
-    user_points = Profile.objects.filter(user=userId).first()
-
-    if answer:
-        user_points.points += 5
-        user_points.save()
-
-    return redirect("leaderboard")
+    answer = Answer.objects.get(pk=answerID)
+    user_profile = Profile.objects.filter(user=userId).first()
+    userRef = User.objects.get(pk=userId)
+    flag=True
+    for profile in user_profile.done.all():
+        confirm_user = (user_profile != profile)
+        if confirm_user is True: flag= False
+    if answer.confirmation is True and flag :
+        user_profile.done.add(answer)        
+        answer.save()
+        user_profile.points += 5
+        user_profile.save()
+        print(user_profile.done.all())
+        return redirect("leaderboard")
+    else:
+        return redirect("location")

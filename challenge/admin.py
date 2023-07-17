@@ -17,7 +17,6 @@ class PlaceAdmin(admin.ModelAdmin):
     """
     list_display = (
         'title',
-        'created_on',
         )
     prepopulated_fields = {
         'slug': ('title',)
@@ -38,7 +37,6 @@ class ChallengeAdmin(admin.ModelAdmin):
     """
     list_display = (
         'quiz',
-        'created_on'
         )
     prepopulated_fields = {
         'slug': ('quiz',)
@@ -53,12 +51,11 @@ class ChallengeAdmin(admin.ModelAdmin):
     
 
 @admin.register(Answer)
-class QuestionAdmin(admin.ModelAdmin):
+class AnswerAdmin(admin.ModelAdmin):
     """
     Admin model class For register model
     """
     list_display = (
         'text',
-        'created_on',
         'confirmation'
         )
