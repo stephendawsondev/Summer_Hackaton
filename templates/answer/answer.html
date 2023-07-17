@@ -2,7 +2,7 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
+  <h1 class="app-title display-4">Your Challenge in {{ challenges.quiz }}</h1>
 
   {% if answers %}
   {% for answer in answers %}
@@ -14,7 +14,7 @@
   {% endif %}
 </section>
 <div class="return-to-dashboard">
-  <a href="{%url 'challenge' answers.first.id%}" class="btn back btn-success w-75">Back</a>
+  <a href="{%url 'challenge' challenges.place.id%}" class="btn back btn-success w-75">Back</a>
 </div>
 
 {% endblock %}
