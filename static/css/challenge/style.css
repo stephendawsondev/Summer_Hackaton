@@ -25,3 +25,9 @@ p {
     background-color: #ccc !important;
     border-color: #ccc !important;
 }
+
+.quiz {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
