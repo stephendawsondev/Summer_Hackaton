@@ -1,0 +1,23 @@
+.rule-section {
+    background-image: url("../../images/mosaic-images-webp-smaller/checkmate_main_img_readme.png");
+    background-position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0, 0, 0, 0.6;
+    background-blend-mode: darken;
+    color: rgba(64, 133, 88);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.content-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.rule-header {
+    padding: 30px;
+}
