@@ -35,7 +35,8 @@ a {
 }
 
 a:hover {
-    font-size: large;
+    text-decoration: none;
+    scale: 1.1;
 }
 
 /* Sub-title */

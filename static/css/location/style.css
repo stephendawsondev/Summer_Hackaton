@@ -1,0 +1,27 @@
+.square-card {
+  width: 125px;
+  height: 125px;
+}
+
+.square-card h5 {
+  font-size: 1rem;
+}
+
+.square-card p {
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 375px) {
+  .square-card {
+    width: 150px;
+    height: 150px;
+  }
+
+  .square-card h5 {
+    font-size: 1.25rem;
+  }
+  
+  .square-card p {
+    font-size: 1rem;
+  }
+}
