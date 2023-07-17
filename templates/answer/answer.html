@@ -2,10 +2,7 @@
 {% block content %}
 
 <section class="initial-landing-section container">
-  <h1 class="app-title display-4 mt-4">Your Challenge in {{ city.city }}</h1>
-  <div class="buttons-container mx-auto mt-5">
-    <p>{{ challenges.quiz }}</p>
-  </div>
+  <h1 class="app-title display-4">Your Challenge in {{ challenges.quiz }}</h1>
   {% if answers %}
   {% for answer in answers %}
   <form action="{% url 'checkanswer' %}" method="post" class="found-it-form">
@@ -23,7 +20,7 @@
 
 </section>
 <div class="return-to-dashboard">
-  <a href="{%url 'challenge' challenges.place.id%}" class="btn back btn-success w-75 mt-5">Back</a>
+  <a href="{%url 'challenge' challenges.place.id%}" class="btn back btn-success w-75">Back</a>
 </div>
 
 {% endblock %}

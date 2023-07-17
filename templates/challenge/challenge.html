@@ -7,19 +7,27 @@
 {% endblock %} {% block content %}
 
 <section class="initial-landing-section container mt-5">
-  <h1 class="app-title display-4 mt-3">Your Challenge in {{ city.city }}</h1>
-  <div class="buttons-container mx-auto mt-3">
+  <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
+  <div class="buttons-container mx-auto">
     <p>Can you find the spot this photo was taken from?</p>
   </div>
+  <!--TO DO -->
+  <!-- if found-it == cordinates:
+            display new text -->
+  <!-- <h1 class="app-title display-4">Congratulations</h1>
+  <div class="buttons-container mx-auto w-75">
+    <p>You've successfully identified the location of this photograph!</p>
+  </div> -->
   {% if challenges %}
+
   {% for challenge in challenges %}
-  <img class="chcard mt-3" src="{{challenge.image.url}}" alt="name" />
+  <img class="chcard" src="{{challenge.image.url}}" alt="name" />
   <form action="{% url 'changeScore' %}" method="post" class="found-it-form">
     {% csrf_token %}
     <input type="hidden" name="score" id="score" value="0" />
     <input type="hidden" name="userId" id="userId" value="{{ request.user.id }}" />
 
-    <button class="btn mt-4 w-100 found-it btn-success" type="submit">Found It!</button>
+    <button class="btn mt-3 w-100 found-it btn-success" type="submit">Found It!</button>
     <button class="d-block mt-1 mx-auto w-75 text-center text-light skip" type="submit">Skip (-1 point)</button>
   </form>
   <a class="btn quiz btn-success" href="{% url 'answer' challenge.id %}">Take the Quiz</a>
