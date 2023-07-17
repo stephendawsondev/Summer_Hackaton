@@ -1,40 +1,39 @@
-{% extends "base.html" %} {% load static %}
-
-{% block extra_css %} 
+{% extends "base.html" %} {% load static %} {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/rules/style.css' %}" />
 {% endblock %}
 
 <!-- This is the content of the html use the sintaxis to make it easy to read dont agroup all in one line-->
 {% block content %}
 
-<section class="container mt-5">
-    <h1 class="app-title display-4">Rules</h1>
+<section class="container mt-5 rule-section">
+    <h1 class="app-title display-4 rule-text">Rules</h1>
     <div class="content-box how-to-play">
-        <h2>How to Play</h2>
+        <h2 class="rule-header">How to Play</h2>
         <ol>
+            <li>Select a location for your challenge</li>
+            <li>Recieve a challenge in the form of a photograph</li>
             <li>
-                Select a location for your challenge
-            </li>
-            <li>
-                Recieve a challenge in the form of a photograph
-            </li>
-            <li>
-                Identify what landmark or distinctive feature the photograph contains
+                Identify what landmark or distinctive feature the photograph
+                contains
             </li>
             <li>
                 Find the location that photograph was taken from and stand there
             </li>
             <li>
-                When you are confident you have found the right location, click 'Found it!'
+                When you are confident you have found the right location, click
+                'Found it!'
             </li>
             <li>
-                If you have successfully found the location, you will be awarded points!
+                If you have successfully found the location, you will be awarded
+                points!
             </li>
             <li>
-                You can now take the quiz about your location to earn more points.
+                You can now take the quiz about your location to earn more
+                points.
             </li>
             <li>
-                Take on another challenge or compare your score with other players on the leaderboard.
+                Take on another challenge or compare your score with other
+                players on the leaderboard.
             </li>
         </ol>
     </div>
