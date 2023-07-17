@@ -113,7 +113,7 @@ Appears on all pages other than landing page.
 Wireframes: https://www.figma.com/file/33kwyBIsqkOHgrO7CeUuoi/Summer-coding?type=design&node-id=0-1&mode=design&t=HcV9nhiV3M36kXZP-
 
 <div align="center">
-  <img src="static/images/mosaic-images-webp-smaller/wireframes_figma_readme.png" alt="landing_page">
+  <img src="static/images/mosaic-images-webp-smaller/wireframes_figma.png" alt="landing_page">
 </div>
 
 ## Tech
