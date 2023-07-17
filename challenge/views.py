@@ -104,7 +104,7 @@ def checkanswer(request):
     for profile in user_profile.done.all():
         confirm_user = (user_profile != profile)
         if confirm_user is True: flag= False
-    if answer.confirmation is True and flag :
+    if answer.confirmation is True:
         user_profile.done.add(answer)        
         answer.save()
         user_profile.points += 5
@@ -112,4 +112,4 @@ def checkanswer(request):
         print(user_profile.done.all())
         return redirect("leaderboard")
     else:
-        return redirect("location")
+        return redirect("leaderboard")
