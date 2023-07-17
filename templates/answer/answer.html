@@ -5,11 +5,11 @@
   <h1 class="app-title display-4">Your Challenge in {{ city.city }}</h1>
 
   {% if answers %}
-  {% for answer in answers %}
-  <div>
-      <p>{{ answers.challenge }}</p>
-      <p>{{ answer.text }}</p>
-    </div>
+    {% for answer in answers %}
+      <div>
+        <p>{{ answer.challenge }}</p>
+        <p>{{ answer.text }}</p>
+      </div>
     {% endfor %}
   {% endif %}
 </section>
