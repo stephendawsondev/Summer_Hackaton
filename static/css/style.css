@@ -3,9 +3,10 @@
 
 /* App container */
 .app-container {
-  position: fixed;
   width: 100%;
   top: 60px;
+  height: calc(100dvh - 60px) !important;
+  overflow: scroll;
 }
 
 /* Form inputs */
